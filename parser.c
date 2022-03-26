@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:10:58 by lloko             #+#    #+#             */
-/*   Updated: 2022/03/10 18:16:40 by lloko            ###   ########.fr       */
+/*   Updated: 2022/03/26 16:31:46 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_digit(int argc, char **argv)
 			j++;
 		if (argv[i][j] == '-' || argv[i][j] == '+')
 			j++;
-		if (argv[i][j] == '\0') // если - и после него нет аргумента
+		if (argv[i][j] == '\0')
 			print_error();
 		while (j < ft_strlen(argv[i]))
 		{
@@ -38,7 +38,8 @@ int	check_digit(int argc, char **argv)
 	return (0);
 }
 
-int	check_integer(char *argv) // в main прописать, что применять нужно к каждой строке
+// в main прописать, что применять нужно к каждой строке
+int	check_integer(char *argv)
 {
 	int	i;
 	int	len;
@@ -47,24 +48,14 @@ int	check_integer(char *argv) // в main прописать, что примен
 	i = 0;
 	len = 0;
 	sign = 0;
-	while ((argv[i] >= '\t' && argv[i] <= '\r') || argv[i] == ' ')
-		i++;
 	if (argv[i] == '-' || argv[i] == '+')
-	{
-		if (argv[i] == '-')
-		{
-			len += 1;
-			sign = -1;
-		}
 		i++;
-	}
 	while (argv[i] >= '0' && argv[i] <= '9')
 	{
 		len += 1;
 		i++;
 	}
-	if ((sign == -1 && ft_atoi(argv) > 0) \
-		|| (sign == 0 && ft_atoi(argv) < 0) || len > 11)
+	if ((sign == -1 && ft_atoi(argv) > 0) || (sign == 0 && ft_atoi(argv) < 0))
 		return (1);
 	return (0);
 }

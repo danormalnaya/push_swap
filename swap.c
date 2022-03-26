@@ -6,19 +6,17 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 15:20:57 by lloko             #+#    #+#             */
-/*   Updated: 2022/01/29 20:53:02 by lloko            ###   ########.fr       */
+/*   Updated: 2022/03/26 16:32:02 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ps.h"
+#include "push_swap.h"
 
 t_stack	make_stack(argc, **argv)
 {
 	t_stack	*stake;
 	int		i;
-	
+
 	i = 0;
 	stake = NULL;
-	
 }
-
