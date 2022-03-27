@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:10:58 by lloko             #+#    #+#             */
-/*   Updated: 2022/03/26 16:31:46 by lloko            ###   ########.fr       */
+/*   Updated: 2022/03/27 18:34:40 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,37 +30,40 @@ int	check_digit(int argc, char **argv)
 		while (j < ft_strlen(argv[i]))
 		{
 			if (!ft_isdigit(argv[i][j]))
-				return (1);
+				return (0);
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 // в main прописать, что применять нужно к каждой строке
-int	check_integer(char *argv)
+int	check_integer(int argc, char *argv)
 {
 	int	i;
 	int	len;
-	int	sign;
+	int	sin;
 
 	i = 0;
 	len = 0;
 	sign = 0;
-	if (argv[i] == '-' || argv[i] == '+')
-		i++;
-	while (argv[i] >= '0' && argv[i] <= '9')
+	while (i < argc)
 	{
-		len += 1;
-		i++;
+		if (argv[i] == '-' || argv[i] == '+')
+			i++;
+		while (argv[i] >= '0' && argv[i] <= '9')
+		{
+			len += 1;
+			i++;
+		}
+		if ((sin == -1 && ft_atoi(argv) > 0) || (sin == 0 && ft_atoi(argv) < 0))
+			return (0);
 	}
-	if ((sign == -1 && ft_atoi(argv) > 0) || (sign == 0 && ft_atoi(argv) < 0))
-		return (1);
-	return (0);
+	return (1);
 }
 
-int	check_duplicates(int argc, char **argv)
+int	check_dup(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -72,31 +75,15 @@ int	check_duplicates(int argc, char **argv)
 		while (j < argc)
 		{
 			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
-				return (1);
+				return (0);
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
-int	main(int argc, char **argv)
+int	parser_argum(int ac, char **av)
 {
-	int	b;
-
-	if (argc >= 2)
-	{
-		if (check_duplicates(argc, argv) == 1)
-			print_error();
-		if (check_digit(argc, argv) == 1)
-			print_error();
-		b = 1;
-		while (b < argc)
-		{
-			if (check_integer(argv[b]) == 1)
-				print_error();
-			b++;
-		}
-	}
-	return (0);
+	return (check_dup(ac, av) && check_digit(ac, av) && check_integer(ac, av));
 }
