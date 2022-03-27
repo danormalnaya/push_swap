@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 16:33:42 by lloko             #+#    #+#             */
-/*   Updated: 2022/03/26 18:50:05 by lloko            ###   ########.fr       */
+/*   Updated: 2022/03/27 18:19:06 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	r(t_stack **stack, char name)
 
 	tmp = *stack;
 	*stack = stack->next;
-	ft_stackadd_back(stack, tmp);
+	stackadd_back(stack, tmp);
 	tmp->next = NULL;
 	write(1, "r", 1);
 	write(1, &name, 1);
@@ -29,8 +29,7 @@ void	rab(t_stack **a, t_stack **b)
 {
 	r(a, 'a');
 	r(b, 'b');
-	write(1, "rr", 2);
-	write(1, "\n", 1);
+	write(1, "rr\n", 3);
 }
 
 void	rr(t_stack **stack, char name)
@@ -42,10 +41,17 @@ void	rr(t_stack **stack, char name)
 	new = tmp;
 	while (tmp->next->next)
 		tmp = tmp->next;
-	stack = tmp->next;
+	*stack = tmp->next;
 	tmp->next = NULL;
-	stack->next = new;
+	(*stack)->next = new;
 	write(1, "rr", 2);
 	write(1, &name, 1);
 	write(1, "\n", 1);
+}
+
+void	rrr(t_stack **a, t_stack **b)
+{
+	rr(a, 'a');
+	rr(b, 'b');
+	write(1, "rrr\n", 4);
 }

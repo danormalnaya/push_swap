@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 16:32:53 by lloko             #+#    #+#             */
-/*   Updated: 2022/03/26 18:14:44 by lloko            ###   ########.fr       */
+/*   Updated: 2022/03/27 14:52:37 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ void	ss(t_stack **a, t_stack **b)
 {
 	swap(a, 'a');
 	swap(b, 'b');
-	write(1, "ss", 1);
-	write(1, "\n", 1);
+	write(1, "ss\n", 3);
 }
 
 void	p(t_stack **a, t_stack	**b, char name)
