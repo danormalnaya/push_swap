@@ -4,24 +4,10 @@ CC = gcc
 
 FLAGS = -Wall -Werror -Wextra
 
-OBJDIR = obj
-SRCDIR = src
+SRC =	fast_sort.c from_libft.c function.c init_stack.c \
+	long_sort.c push_swap.c max_min_index.c parser.c rotate_operations.c swap_operations.c work_arr.c utils.c ft_itoa.c
 
-HEADER = push_swap.h
-
-SRC =	$(SRCDIR)/fast_sort.c \
-		$(SRCDIR)/function.c \
-		$(SRCDIR)/init_stack.c \
-		$(SRCDIR)/long_sort.c \
-		$(SRCDIR)/main.c \
-		$(SRCDIR)/max_min_index.c \
-		$(SRCDIR)/parser.c \
-		$(SRCDIR)/rotate_operations.c \
-		$(SRCDIR)/swap_operations.c \
-		$(SRCDIR)/utils.c \
-		$(SRCDIR)/work_arr.c \
-
-OBJ = $(addprefix $(OBJDIR)/, $(SRC: .c=.o))
+OBJ = $(SRC: .c=.o)
 
 .PHONY: all clen fclean re 
 
@@ -31,16 +17,12 @@ $(NAME): $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 	@printf "DONE push_swap! \n\n"
 
-$(OBJDIR)/$(SRCDIR)/%.o: 	$(SRCDIR)/%.c $(HEADER)
-				@$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.c push_swap.h
+	$(CC) $(FLAGS) -c $< -o $@
 
-$(OBJDIR):
-	@MKDIR $@ $@/$(SRCDIR)
-
-$(OBJ): | $(OBJDIR)
 
 clean:
-	@rm -rf $(OBJDIR)
+	@rm -rf $(OBJ)
 
 fclean:
 	@rm -rf $(NAME)

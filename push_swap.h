@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:25:19 by lloko             #+#    #+#             */
-/*   Updated: 2022/04/02 16:10:03 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/02 17:42:18 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <limits.h>
+# include <unistd.h>
 
 typedef struct s_stack	t_stack;
 
@@ -35,9 +36,13 @@ void	print_error(void);
 size_t	ft_strlen(const char *s);
 int		ft_isdigit(int d);
 int		ft_atoi(const char *str);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putchar_fd(char c, int fd);
+char	*ft_itoa(int n);
 
 int		check_digit(int argc, char **argv);
-int		check_integer(int argc, char *argv);
+int		check_integer(int argc, char **argv);
 int		check_dup(int argc, char **argv);
 int		parser_argum(int ac, char **av);
 int		*write_index_in_arr(t_stack *stack, int *arr);
@@ -52,7 +57,7 @@ void	print(t_stack *stack);
 void	init_stack(t_stack **stack_a, int argc, char **argv);
 void	stack_index(t_stack **stack, int size);
 int		compare(t_stack **stack, int index, int i);
-void	sotring_up_to_5(t_stack **a, t_stack **b, int size);
+void	sorting_up_to_5(t_stack **a, t_stack **b, int size);
 void	longsort(t_stack **a, t_stack **b, int size);
 
 void	swap(t_stack **stack, char name);

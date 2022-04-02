@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 16:32:53 by lloko             #+#    #+#             */
-/*   Updated: 2022/03/27 14:52:37 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/02 17:48:59 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	swap(t_stack **stack, char name)
 	if (!(*stack) || !(*stack)->next)
 		return ;
 	tmp = *stack;
-	new = stack->next->next;
+	new = (*stack)->next->next;
 	*stack = (*stack)->next;
-	stack->next = tmp;
-	stack->next->next = new;
+	(*stack)->next = tmp;
+	(*stack)->next->next = new;
 	write(1, "s", 1);
 	write(1, &name, 1);
 	write(1, "\n", 1);

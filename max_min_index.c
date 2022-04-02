@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 16:51:39 by lloko             #+#    #+#             */
-/*   Updated: 2022/03/27 17:55:33 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/02 17:40:51 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	is_sorted(t_stack *stack)
 	while (stack->next)
 	{
 		if ((stack->index + 1) == stack->next->index)
-			stack = stack->index;
+			stack = stack->next;
 		else
 			return (1);
 	}

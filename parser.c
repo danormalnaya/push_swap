@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:10:58 by lloko             #+#    #+#             */
-/*   Updated: 2022/03/27 18:34:40 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/02 17:45:02 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,24 @@ int	check_digit(int argc, char **argv)
 	return (1);
 }
 
-// в main прописать, что применять нужно к каждой строке
-int	check_integer(int argc, char *argv)
+int	check_integer(int ac, char **av)
 {
-	int	i;
-	int	len;
-	int	sin;
+	size_t	j;
+	int		i;
 
-	i = 0;
-	len = 0;
-	sign = 0;
-	while (i < argc)
+	i = 1;
+	while (i < ac)
 	{
-		if (argv[i] == '-' || argv[i] == '+')
-			i++;
-		while (argv[i] >= '0' && argv[i] <= '9')
+		j = 0;
+		if (av[i][j] == '-' || av[i][j] == '+')
+			j++;
+		while (j < ft_strlen(av[i]))
 		{
-			len += 1;
-			i++;
+			if (!ft_isdigit(av[i][j]))
+				return (0);
+			j++;
 		}
-		if ((sin == -1 && ft_atoi(argv) > 0) || (sin == 0 && ft_atoi(argv) < 0))
-			return (0);
+		i++;
 	}
 	return (1);
 }

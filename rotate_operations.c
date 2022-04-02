@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 16:33:42 by lloko             #+#    #+#             */
-/*   Updated: 2022/03/27 18:19:06 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/02 17:48:16 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	r(t_stack **stack, char name)
 	t_stack	*tmp;
 
 	tmp = *stack;
-	*stack = stack->next;
+	*stack = (*stack)->next;
 	stackadd_back(stack, tmp);
 	tmp->next = NULL;
 	write(1, "r", 1);

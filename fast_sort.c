@@ -6,11 +6,11 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 18:48:18 by lloko             #+#    #+#             */
-/*   Updated: 2022/04/02 16:09:04 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/02 17:51:32 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_sawp.h"
+#include "push_swap.h"
 
 static void	sort_2_items(t_stack **stack)
 {
@@ -56,7 +56,7 @@ static void	sort_4_items(t_stack **a, t_stack **b)
 		}
 	}
 	if ((*a)->index != min_index(*a))
-		s(a, 'a');
+		swap(a, 'a');
 	while (*b)
 		p(a, b, 'a');
 }
@@ -81,12 +81,12 @@ static void	sort_5_items(t_stack **a, t_stack **b)
 		}
 	}
 	if ((*a)->index != min_index(*a))
-		s(a, 'a');
+		swap(a, 'a');
 	while (*b)
 		p(a, b, 'a');
 }
 
-void	sotring_up_to_5(t_stack **a, t_stack **b, int size)
+void	sorting_up_to_5(t_stack **a, t_stack **b, int size)
 {
 	if (size == 2)
 		sort_2_items(a);

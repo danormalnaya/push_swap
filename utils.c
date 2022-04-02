@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:40:12 by lloko             #+#    #+#             */
-/*   Updated: 2022/03/27 17:31:44 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/02 17:49:31 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_stack	*stack_new(int content)
 	res = malloc(sizeof(*res));
 	if (!res)
 		return (0);
-	res->content = content;
+	res->value = content;
 	res->next = NULL;
 	return (res);
 }

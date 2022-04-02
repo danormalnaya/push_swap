@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 17:36:17 by lloko             #+#    #+#             */
-/*   Updated: 2022/04/02 17:07:08 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/02 17:35:45 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_putnbr_fd(int n, int fd)
 	if (fd > 0)
 	{
 		s = ft_itoa(n);
-		ft_putstr_fd(s, fd);
+		ft_putendl_fd(s, fd);
 		free(s);
 	}
 }
