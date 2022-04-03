@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 15:37:27 by lloko             #+#    #+#             */
-/*   Updated: 2022/03/27 16:20:01 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/03 14:53:09 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ int	*sort_arr(int *arr, int size)
 	int	j;
 	int	tmp;
 
-	i = 0;
 	if (!arr || !size)
 		return (0);
+	i = 0;
 	while (i < size - 1)
 	{
 		j = i + 1;
@@ -78,7 +78,7 @@ int	*arr_copy(int *arr1, int *arr2, int size)
 	i = 0;
 	while (i < size)
 	{
-		arr1[i] = arr2[i];
+		arr2[i] = arr1[i];
 		i++;
 	}
 	return (arr2);

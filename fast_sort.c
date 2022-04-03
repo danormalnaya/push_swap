@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 18:48:18 by lloko             #+#    #+#             */
-/*   Updated: 2022/04/02 17:51:32 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/03 16:23:33 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,25 @@
 static void	sort_2_items(t_stack **stack)
 {
 	if ((*stack)->next->index < (*stack)->index)
-		swap(stack, 'a');
+		sa(stack, 1);
 }
 
 static void	sort_3_items(t_stack **stack)
 {
 	if ((*stack)->index == max_index(*stack))
-		swap(stack, 'a');
+		ra(stack, 1);
 	if ((*stack)->index == min_index(*stack)
 		&& (*stack)->next->index == max_index(*stack))
 	{
-		rr(stack, 'a');
-		swap(stack, 'a');
+		rra(stack, 1);
+		sa(stack, 1);
 	}
 	if ((*stack)->index != min_index(*stack)
 		&& (*stack)->index > (*stack)->next->index)
-		swap(stack, 'a');
+		sa(stack, 1);
 	if ((*stack)->index != min_index(*stack)
 		&& (*stack)->index < (*stack)->next->index)
-		rr(stack, 'a');
+		rra(stack, 1);
 }
 
 static void	sort_4_items(t_stack **a, t_stack **b)
@@ -45,20 +45,20 @@ static void	sort_4_items(t_stack **a, t_stack **b)
 	{
 		if ((*a)->index > min_index(*a)
 			&& !compare(a, min_index(*a), stack_len(*a)))
-			r(a, 'a');
+			ra(a, 1);
 		else if ((*a)->index > min_index(*a)
 			&& compare(a, min_index(*a), stack_len(*a)))
-			rr(a, 'a');
+			rra(a, 1);
 		else
 		{
-			p(a, b, 'b');
+			pb(a, b);
 			i++;
 		}
 	}
 	if ((*a)->index != min_index(*a))
-		swap(a, 'a');
+		sa(a, 1);
 	while (*b)
-		p(a, b, 'a');
+		pa(a, b);
 }
 
 static void	sort_5_items(t_stack **a, t_stack **b)
@@ -70,20 +70,20 @@ static void	sort_5_items(t_stack **a, t_stack **b)
 	{
 		if ((*a)->index > min_index(*a)
 			&& !compare(a, min_index(*a), stack_len(*a)))
-			r(a, 'a');
+			ra(a, 1);
 		else if ((*a)->index > min_index(*a)
 			&& compare(a, min_index(*a), stack_len(*a)))
-			rr(a, 'a');
+			rra(a, 1);
 		else
 		{
-			p(a, b, 'b');
+			pb(a, b);
 			i++;
 		}
 	}
 	if ((*a)->index != min_index(*a))
-		swap(a, 'a');
+		sa(a, 1);
 	while (*b)
-		p(a, b, 'a');
+		pa(a, b);
 }
 
 void	sorting_up_to_5(t_stack **a, t_stack **b, int size)

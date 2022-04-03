@@ -6,20 +6,20 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:40:12 by lloko             #+#    #+#             */
-/*   Updated: 2022/04/02 17:49:31 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/03 14:14:32 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*stack_new(int content)
+t_stack	*stack_new(int value)
 {
 	t_stack	*res;
 
-	res = malloc(sizeof(*res));
+	res = malloc(sizeof(t_stack));
 	if (!res)
-		return (0);
-	res->value = content;
+		return (NULL);
+	res->value = value;
 	res->next = NULL;
 	return (res);
 }
@@ -37,24 +37,21 @@ int	stack_len(t_stack *st)
 	return (len);
 }
 
-t_stack	*stack_last(t_stack *lst)
+t_stack	*stack_last(t_stack *stack)
 {
-	t_stack	*tmp;
-
-	if (!lst)
-		return (0);
-	tmp = lst;
-	while (tmp->next)
-		tmp = tmp->next;
-	return (tmp);
+	if (!stack)
+		return (NULL);
+	while (stack->next)
+		stack = stack->next;
+	return (stack);
 }
 
-void	stackadd_back(t_stack **lst, t_stack *new)
+void	stack_add(t_stack **stack, t_stack *new_elem)
 {
-	if (!*lst)
-		(*lst) = new;
-	else
-		stack_last(*lst)->next = new;
+	if (!stack && !new_elem)
+		return ;
+	new_elem->next = *stack;
+	*stack = new_elem;
 }
 
 void	stack_clear(t_stack *stack)

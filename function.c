@@ -6,13 +6,11 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:26:03 by lloko             #+#    #+#             */
-/*   Updated: 2022/03/27 19:18:56 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/03 19:04:04 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// ft_putnbr_fd and ft_putchar_fd
 
 void	print_error(void)
 {
@@ -62,4 +60,25 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (result * sign);
+}
+
+long long	ft_atol(const char *str)
+{
+	int			i;
+	long long	res;
+	int			sign;
+
+	i = 0;
+	res = 0;
+	sign = 1;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+		sign = 1 - 2 * (str[i++] == '-');
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
+	{
+		res = (res * 10) + (str[i] - '0');
+		i++;
+	}
+	return (res * sign);
 }

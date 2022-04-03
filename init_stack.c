@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 15:33:54 by lloko             #+#    #+#             */
-/*   Updated: 2022/03/27 17:34:24 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/03 16:24:08 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	init_stack(t_stack **stack_a, int argc, char **argv)
 {
 	while (argc != 1)
 	{
-		stackadd_back(stack_a, stack_new(ft_atoi(argv[argc + 1])));
-		argc++;
+		stack_add(stack_a, stack_new(ft_atoi(argv[argc - 1])));
+		argc--;
 	}
 }
 
