@@ -6,37 +6,39 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 19:03:27 by lloko             #+#    #+#             */
-/*   Updated: 2022/04/04 21:54:51 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:00:02 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus_checker.h"
 
-static int	check_op(char *str, t_stack **a, t_stack **b)
+static int	check_op(char *in, t_stack **a, t_stack **b)
 {
-	if (!ft_strncmp(str, "pa", 2))
-		return (check_pa(a, b));
-	if (!ft_strncmp(str, "pb", 2))
-		return (check_pb(a, b));
-	if (!ft_strncmp(str, "sa", 2))
-		return (check_sa(a));
-	if (!ft_strncmp(str, "sb", 2))
-		return (check_sb(b));
-	if (!ft_strncmp(str, "ss", 2))
-		return (check_ss(a, b));
-	if (!ft_strncmp(str, "rra", 3))
-		return (check_rra(a));
-	if (!ft_strncmp(str, "rrb", 3))
-		return (check_rrb(b));
-	if (!ft_strncmp(str, "rrr", 3))
-		return (check_rrr(a, b));
-	if (!ft_strncmp(str, "ra", 2))
-		return (check_ra(a));
-	if (!ft_strncmp(str, "rb", 2))
-		return (check_rb(b));
-	if (!ft_strncmp(str, "rr", 2))
-		return (check_rr(a, b));
-	return (0);
+	if (3 == ft_strlen(in) && !ft_strncmp(in, "sa\n", ft_strlen(in)))
+		check_sa(a);
+	else if (3 == ft_strlen(in) && !ft_strncmp(in, "sb\n", ft_strlen(in)))
+		check_sb(b);
+	else if (3 == ft_strlen(in) && !ft_strncmp(in, "ss\n", ft_strlen(in)))
+		check_ss(a, b);
+	else if (3 == ft_strlen(in) && !ft_strncmp(in, "ra\n", ft_strlen(in)))
+		check_ra(a);
+	else if (3 == ft_strlen(in) && !ft_strncmp(in, "rb\n", ft_strlen(in)))
+		check_rb(b);
+	else if (3 == ft_strlen(in) && !ft_strncmp(in, "rr\n", ft_strlen(in)))
+		check_rr(a, b);
+	else if (4 == ft_strlen(in) && !ft_strncmp(in, "rra\n", ft_strlen(in)))
+		check_rra(a);
+	else if (4 == ft_strlen(in) && !ft_strncmp(in, "rrb\n", ft_strlen(in)))
+		check_rrb(b);
+	else if (4 == ft_strlen(in) && !ft_strncmp(in, "rrr\n", ft_strlen(in)))
+		check_rrr(a, b);
+	else if (3 == ft_strlen(in) && !ft_strncmp(in, "pa\n", ft_strlen(in)))
+		check_pa(a, b);
+	else if (3 == ft_strlen(in) && !ft_strncmp(in, "pb\n", ft_strlen(in)))
+		check_pb(a, b);
+	else
+		return (0);
+	return (1);
 }
 
 static void	read_instructions(t_stack **a, t_stack **b)
@@ -77,8 +79,6 @@ int	main(int ac, char **av)
 
 	if (ac > 2)
 	{
-		if (!parser_argum(ac, av))
-			print_error();
 		a = NULL;
 		b = NULL;
 		init_stack(&a, ac, av);

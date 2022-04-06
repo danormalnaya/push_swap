@@ -19,7 +19,7 @@ SRC =	fast_sort.c \
 		work_arr.c \
 		utils.c
 
-SRC_BONUS = bonus_checker/checker \
+SRC_BONUS = bonus_checker/checker.c \
 			bonus_checker/instraction.c \
 			bonus_checker/instraction2.c \
 			bonus_checker/instraction3.c \
@@ -53,7 +53,7 @@ $(BONUS): $(OBJ_BONUS)
 	$(CC) $(FLAGS) $(OBJ_BONUS) -Llibft ./libft/libft.a -o $(BONUS)
 	@printf "DONE push_swap bonus! \n\n"
 
-%.o: %.c push_swap.h bonus_checker.h libft/libft.h gnl/get_next_line.h
+%.o: %.c push_swap.h bonus_checker/bonus_checker.h libft/libft.h gnl/get_next_line.h
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:

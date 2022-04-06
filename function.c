@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:26:03 by lloko             #+#    #+#             */
-/*   Updated: 2022/04/04 21:12:57 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:05:06 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,22 @@ long long	ft_atol(const char *str)
 		i++;
 	}
 	return (res * sign);
+}
+
+void	stackadd_back(t_stack **lst, t_stack *new)
+{
+	t_stack	*i;
+
+	if (lst)
+	{
+		i = *lst;
+		if (*lst)
+		{
+			while (i->next)
+				i = i->next;
+			i->next = new;
+		}
+		else
+			*lst = new;
+	}
 }

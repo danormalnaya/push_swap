@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 15:20:57 by lloko             #+#    #+#             */
-/*   Updated: 2022/04/03 17:03:39 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:04:27 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ int	main(int argc, char **argv)
 	t_stack	*stack_b;
 	int		i;
 
-	if (argc > 2)
+	if (argc > 1)
 	{
-		if (parser_argum(argc, argv) == 0)
-			print_error();
 		stack_a = NULL;
 		stack_b = NULL;
 		init_stack(&stack_a, argc, argv);

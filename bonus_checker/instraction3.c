@@ -6,7 +6,7 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 18:53:33 by lloko             #+#    #+#             */
-/*   Updated: 2022/04/04 21:55:33 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/06 16:59:56 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_sb(t_stack **b)
 		{
 			tmp = *b;
 			new = tmp->next->next;
-			*b = (*a)->next;
+			*b = (*b)->next;
 			(*b)->next = tmp;
 			(*b)->next->next = new;
 		}

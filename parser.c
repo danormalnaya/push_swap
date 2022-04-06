@@ -6,52 +6,36 @@
 /*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:10:58 by lloko             #+#    #+#             */
-/*   Updated: 2022/04/03 17:42:38 by lloko            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:01:41 by lloko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_dup(int argc, char **argv)
+void	check_args(size_t argc, char **argv)
 {
-	int	i;
-	int	j;
-
-	i = 1;
-	while (i < argc)
-	{
-		j = i + 1;
-		while (j < argc)
-		{
-			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-int	check_digit(int argc, char **argv)
-{
+	size_t	i;
 	size_t	j;
-	int		i;
+	size_t	len;
 
+	if (argc < 2)
+		exit(EXIT_SUCCESS);
 	i = 1;
 	while (i < argc)
 	{
+		len = ft_strlen(argv[i]);
+		if (!len)
+			print_error();
 		j = 0;
-		if (argv[i][j] == '-' || argv[i][j] == '+')
-			j++;
-		while (j < ft_strlen(argv[i]))
+		while (argv[i][j])
 		{
-			if (!ft_isdigit(argv[i][j]))
-				return (0);
-			j++;
+			if (!(ft_isdigit(argv[i][j]) || argv[i][j] == ' '
+				|| (argv[i][j] == '-' && ft_isdigit(argv[i][j + 1]))))
+				print_error();
+			++j;
 		}
-		i++;
+		++i;
 	}
-	return (1);
 }
 
 int	check_integer(int argc, char **argv)
@@ -62,13 +46,26 @@ int	check_integer(int argc, char **argv)
 	while (i < argc)
 	{
 		if (ft_atol(argv[i]) < INT_MIN || ft_atol(argv[i]) > INT_MAX)
-			return (0);
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
-int	parser_argum(int ac, char **av)
+int	check_duplicat(t_stack *stack)
 {
-	return (check_dup(ac, av) && check_digit(ac, av) && check_integer(ac, av));
+	t_stack	*tmp;
+
+	while (stack)
+	{
+		tmp = stack->next;
+		while (tmp)
+		{
+			if (tmp->value == stack->value)
+				return (1);
+			tmp = tmp->next;
+		}
+		stack = stack->next;
+	}
+	return (0);
 }
